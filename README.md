@@ -1,6 +1,6 @@
-# 智扫通机器人智能客服 🤖
+# 知晓 · 智能家居智能客服 🤖
 
-> 基于 LangChain ReAct Agent + RAG + Streamlit 的扫地机器人智能客服系统
+> 基于 LangChain ReAct Agent + RAG + Streamlit 的**多品类智能家居**智能客服（扫地/扫拖机器人、智能冰箱、智能空调等）
 
 ---
 # 使用必看
@@ -8,9 +8,9 @@
 
 ## 📖 项目简介
 
-**智扫通机器人智能客服**是一款面向扫地机器人/扫拖一体机器人用户的 AI 智能体应用。系统以 Streamlit 构建轻量级前端网页，后端基于 LangChain 搭建 ReAct（Reasoning + Acting）Agent，整合以下核心能力：
+*智能家居智能客服**面向多种智能家居用户，当前知识库与提示词明确覆盖至少三类：**扫地/扫拖一体机器人**、**智能冰箱**、**智能空调**。系统以 Streamlit 构建轻量级前端网页，后端基于 LangChain 搭建 ReAct（Reasoning + Acting）Agent，整合以下核心能力：
 
-- **RAG 增强检索**：将产品手册、常见问题、维护指南等文档向量化存储，AI 回答时优先检索知识库，确保答案准确可靠。
+- **RAG 增强检索**：将各品类手册片段、常见问题、维护指南等文档向量化存储，AI 回答时优先检索知识库，确保答案准确可靠。
 - **高德 MCP 服务**：调用高德地图 API 实时获取用户定位与天气信息。
 - **总结汇报模式**：中间件通过识别特定意图，动态切换系统提示词，自动生成使用情况报告（Markdown 格式）。
 - **多轮工具调用**：Agent 可自主规划并多轮调用所配备的工具，直至满足用户需求。
@@ -67,7 +67,7 @@
 │  Chroma 向量数据库 (chroma_db/)│
 │  Embedding: text-embedding-v4 │
 │  知识库文档 (data/)           │
-│  ├─ PDF / TXT 文档            │
+│  ├─ 扫地机器人 / 冰箱空调等 TXT、PDF │
 │  └─ chunk_size=200, k=3       │
 └──────────────────────────────┘
 ```
@@ -111,6 +111,7 @@ zhisaotong-Agent/
 │   ├── 故障排除.txt
 │   ├── 维护保养.txt
 │   ├── 选购指南.txt
+│   ├── 智能家居冰箱与空调知识.txt
 │   └── external/
 │       └── records.csv           # 用户使用记录（外部数据）
 ├── chroma_db/                    # Chroma 持久化目录（自动生成）
@@ -148,20 +149,29 @@ pip install streamlit langchain langchain-core langchain-community langgraph \
             langchain-chroma chromadb dashscope pypdf pyyaml
 ```
 
-
 ---
 
 ## ⚙️ 配置说明
 
-### 1. 阿里云 API Key
+### 1. 阿里云 DashScope API Key
 
-本项目使用阿里云通义千问大模型和 DashScope Embedding，需要配置系统环境变量：
+本项目使用阿里云通义千问（`ChatTongyi`）和 DashScope Embedding，需要配置 **DashScope** 的 API Key（变量名必须是下面之一，**不是** `OPENAI_API_KEY`）：
+
+**推荐：环境变量**
 
 ```bash
-OPENAI_API_KEY="your_open_api_key"
+# Linux / macOS
+export DASHSCOPE_API_KEY="你的DashScope密钥"
+
+# Windows PowerShell（仅当前终端有效）
+$env:DASHSCOPE_API_KEY="你的DashScope密钥"
 ```
 
+**备选：** 在 `config/rag.yml` 中取消注释并填写 `dashscope_api_key`（请勿把含真实密钥的文件提交到 Git）。
+
 > 可在 [阿里云百炼平台](https://bailian.console.aliyun.com/) 获取 API Key。
+
+依赖包需包含官方 SDK：`pip install dashscope`（若初始化 Embedding 时提示 `No module named 'dashscope'`，请安装）。
 
 ### 2. 高德地图 API Key
 
@@ -236,7 +246,7 @@ export DASHSCOPE_API_KEY="your_dashscope_api_key"
 streamlit run app.py
 ```
 
-浏览器将自动打开 `http://localhost:8501`，即可开始与智扫通机器人智能客服对话。
+浏览器将自动打开 `http://localhost:8501`，即可开始与智扫通智能家居客服对话。
 
 ---
 
@@ -246,12 +256,13 @@ streamlit run app.py
 
 ### 产品咨询
 
-直接提问关于扫地机器人的使用、维护、故障排除等问题，Agent 会优先从知识库中检索相关资料进行回答：
+可直接提问扫地机器人、冰箱、空调等品类的使用、维护、故障排除等问题，Agent 会优先从知识库中检索相关资料进行回答：
 
 ```
 用户：扫地机器人的滤网多久需要更换一次？
-用户：扫拖一体机器人和扫地机器人有什么区别？
-用户：扫地机器人吸力变弱了怎么办？
+用户：智能冰箱冷藏室结霜严重可能是什么原因？
+用户：空调滤网大概多久洗一次比较合适？
+用户：风冷冰箱和直冷冰箱怎么选？
 ```
 
 ### 天气与定位查询
@@ -268,7 +279,7 @@ Agent 会自动检测报告生成意图，切换到报告提示词，并调用�
 
 ```
 用户：帮我生成我的使用报告
-用户：给我一份扫地机器人的使用分析和保养建议
+用户：给我一份智能家居的使用分析和保养建议
 ```
 
 ---
@@ -279,7 +290,7 @@ Agent 配备了以下 7 个工具：
 
 | 工具名 | 描述 |
 |--------|------|
-| `rag_summarize` | 从向量知识库中检索参考资料，回答产品相关问题 |
+| `rag_summarize` | 从向量知识库检索多品类智能家居参考资料 |
 | `get_weather` | 获取指定城市的实时天气（高德 API） |
 | `get_user_location` | 通过 IP 获取用户所在城市（高德 API） |
 | `get_user_id` | 获取当前用户 ID |
@@ -341,7 +352,8 @@ logs/
 | `扫拖一体机器人100问.txt` | 扫拖一体机器人常见问题解答 |
 | `故障排除.txt` | 故障排除指南 |
 | `维护保养.txt` | 日常维护保养说明 |
-| `选购指南.txt` | 购买建议与选型指南 |
+| `选购指南.txt` | 扫地/扫拖机器人购买建议与选型指南 |
+| `智能家居冰箱与空调知识.txt` | 智能冰箱与智能空调选购、使用、故障与维护要点 |
 
 如需扩展知识库，只需将新的 `.txt` 或 `.pdf` 文件放入 `data/` 目录，重启服务后会自动加载。
 
@@ -356,7 +368,4 @@ logs/
 
 ---
 
-## 📄 许可证
 
-本项目仅供学习与参考使用。
-感谢黑马程序员开源免费项目、阿里云和高德地图等开放平台。
