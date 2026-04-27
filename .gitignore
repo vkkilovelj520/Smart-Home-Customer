@@ -1,0 +1,39 @@
+# 隐藏配置文件（包括 yml）
+config/
+*.yml
+*.yaml
+*.env
+*.ini
+*.key
+*.secret
+
+# 隐藏数据、数据库和日志
+chroma_db/
+logs/
+data/
+*.db
+*.sqlite
+
+# 隐藏 IDE 配置和临时文件
+.idea/
+.vscode/
+*.tmp
+*.log
+*.pyc
+__pycache__/
+
+# 隐藏模型和缓存
+model/
+*.pkl
+*.bin
+*.pt
+*.onnx
+
+# Python 相关
+venv/
+env/
+.venv/
+
+# 系统文件
+.DS_Store
+Thumbs.db
