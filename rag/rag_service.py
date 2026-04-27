@@ -7,7 +7,7 @@ from langchain_core.output_parsers import StrOutputParser
 from rag.vector_store import VectorStoreService
 from utils.prompt_loader import load_rag_prompts
 from langchain_core.prompts import PromptTemplate
-from model.factory import chat_model
+from model.factory import get_chat_model
 
 
 def print_prompt(prompt):
@@ -23,7 +23,7 @@ class RagSummarizeService(object):
         self.retriever = self.vector_store.get_retriever()
         self.prompt_text = load_rag_prompts()
         self.prompt_template = PromptTemplate.from_template(self.prompt_text)
-        self.model = chat_model
+        self.model = get_chat_model()
         self.chain = self._init_chain()
 
     def _init_chain(self):
@@ -54,4 +54,4 @@ class RagSummarizeService(object):
 if __name__ == '__main__':
     rag = RagSummarizeService()
 
-    print(rag.rag_summarize("小户型适合哪些扫地机器人"))
+    print(rag.rag_summarize("智能冰箱风冷和直冷怎么选"))

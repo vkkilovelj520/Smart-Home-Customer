@@ -1,4 +1,8 @@
 external_data_path: data/external/records.csv
-gaodekey: 你的高德key!
+gaodekey: 32555f6affe7da4313a15f0d8492271a
 gaode_base_url: https://restapi.amap.com
 gaode_timeout: 5
+
+# 用户默认城市（覆盖 IP 定位结果，IP 定位可能不准）
+# 可选值：北京、上海、广州、深圳、杭州、武汉 等
+default_city: 北京

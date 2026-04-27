@@ -3,6 +3,7 @@ from utils.logger_handler import logger
 from langchain_core.tools import tool
 from rag.rag_service import RagSummarizeService
 import random
+from typing import Optional
 from utils.config_handler import agent_conf
 from utils.path_tool import get_abs_path
 import json
@@ -11,7 +12,16 @@ from urllib.request import urlopen
 from urllib.error import URLError, HTTPError
 import re
 
-rag = RagSummarizeService()
+_rag_service: Optional[RagSummarizeService] = None
+
+
+def _get_rag_service() -> RagSummarizeService:
+    global _rag_service
+    if _rag_service is None:
+        _rag_service = RagSummarizeService()
+    return _rag_service
+
+
 user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010",]
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
              "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", ]
@@ -120,6 +130,12 @@ def get_weather(city: str) -> str:
 
 @tool(description="获取用户所在城市的名称，以纯字符串形式返回")
 def get_user_location() -> str:
+    # 优先使用配置的默认城市（IP 定位可能不准）
+    default_city = agent_conf.get("default_city", "").strip()
+    if default_city:
+        logger.info(f"[get_user_location]使用配置的默认城市：{default_city}")
+        return default_city
+
     try:
         public_ip = _get_public_ip()
         params = {"ip": public_ip} if public_ip else {}
@@ -160,9 +176,14 @@ def get_user_location() -> str:
 
 
 
-@tool(description="从向量存储中检索参考资料")
+@tool(
+    description=(
+        "从向量知识库检索智能家居相关资料，覆盖扫地/扫拖机器人、智能冰箱、智能空调等；"
+        "入参 query 为检索关键词（可含品类词）"
+    )
+)
 def rag_summarize(query: str) -> str:
-    return rag.rag_summarize(query)
+    return _get_rag_service().rag_summarize(query)
 
 
 @tool(description="获取用户的ID，以纯字符串形式返回")
@@ -216,7 +237,12 @@ def generate_external_data():
                 }
 
 
-@tool(description="从外部系统中获取指定用户在指定月份的使用记录，以纯字符串形式返回， 如果未检索到返回空字符串")
+@tool(
+    description=(
+        "从外部系统获取指定用户、指定月份的智能家居综合使用记录（以字符串返回）；"
+        "未检索到则返回空字符串"
+    )
+)
 def fetch_external_data(user_id: str, month: str) -> str:
     generate_external_data()
 
@@ -232,5 +258,5 @@ def fill_context_for_report():
     return "fill_context_for_report已调用"
 
 
-# if __name__ == '__main__':
-#     print(get_weather(get_user_location()))
+if __name__ == '__main__':
+    print(get_weather(get_user_location()))

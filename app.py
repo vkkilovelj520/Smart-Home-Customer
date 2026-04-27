@@ -1,10 +1,10 @@
 import time
-
+# sk-f15f35b5d91e424bba6eed6acfecab5a
 import streamlit as st
 from agent.react_agent import ReactAgent
 
-# 标题
-st.title("智扫通机器人智能客服")
+st.title("知晓智能家居智能客服")
+st.caption("支持扫地/扫拖机器人、智能冰箱、智能空调等多品类咨询与使用报告")
 st.divider()
 
 if "agent" not in st.session_state:

@@ -1,0 +1,77 @@
+2026-04-27 15:53:36,574 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 15:53:36,575 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 你好
+2026-04-27 15:54:05,886 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 15:54:05,886 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我想问一下，这个机器人多久清洁一次充一次点
+2026-04-27 15:54:13,139 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-04-27 15:54:13,140 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '扫地机器人 清洁频率 回充周期 电池管理'}
+2026-04-27 15:54:16,541 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-04-27 15:54:17,838 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 15:54:17,839 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 扫地机器人的清洁频率通常根据用户设定的计划自动执行，支持每日或按需清扫；回充周期在其电池电量低时自动返回充电座充电；电池管理采用智能算法，可优化充放电过程以延长电池寿命，并支持自动续扫功能（低电量回充后继续完成未完成的清洁任务）。
+2026-04-27 15:55:49,024 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 15:55:49,024 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 空调多久换一次滤布
+2026-04-27 15:55:51,251 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-04-27 15:55:51,252 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '空调滤布更换周期'}
+2026-04-27 15:55:53,028 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-04-27 15:55:53,209 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 15:55:53,209 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 空调滤布建议每3个月更换一次。
+2026-04-27 15:56:20,919 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 15:56:20,920 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 你知道歌手李健吗
+2026-04-27 16:01:17,550 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:01:17,551 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 冰箱有什么优点
+2026-04-27 16:01:19,335 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-04-27 16:01:19,335 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'query': '智能冰箱优点 功能优势'}
+2026-04-27 16:01:22,317 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-04-27 16:01:23,149 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 16:01:23,149 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 智能冰箱具备食材管理、过期提醒、远程控制、智能菜谱推荐等功能，可提升食材保鲜效果与使用效率，支持联网操作，便于用户实时掌握冰箱状态并优化饮食安排。
+2026-04-27 16:09:26,595 - agent - ERROR - file_handler.py:11 - [md5计算]文件/this/file/does/not/exist.txt不存在
+2026-04-27 16:09:26,598 - agent - ERROR - file_handler.py:15 - [md5计算]路径D:\zhisaotong-Agent-master\data不是文件
+2026-04-27 16:09:26,606 - agent - ERROR - file_handler.py:44 - [listdir_with_allowed_type]D:\zhisaotong-Agent-master\app.py不是文件夹
+2026-04-27 16:09:26,613 - agent - INFO - test_logger_handler.py:32 - [TEST] 这是一条测试日志，可以忽略
+2026-04-27 16:09:26,615 - agent - ERROR - test_logger_handler.py:42 - [TEST] 这是一条错误日志测试
+2026-04-27 16:09:34,010 - agent - ERROR - file_handler.py:11 - [md5计算]文件/this/file/does/not/exist.txt不存在
+2026-04-27 16:09:34,014 - agent - ERROR - file_handler.py:15 - [md5计算]路径D:\zhisaotong-Agent-master\data不是文件
+2026-04-27 16:09:34,024 - agent - ERROR - file_handler.py:44 - [listdir_with_allowed_type]D:\zhisaotong-Agent-master\app.py不是文件夹
+2026-04-27 16:09:34,034 - agent - INFO - test_logger_handler.py:32 - [TEST] 这是一条测试日志，可以忽略
+2026-04-27 16:09:34,037 - agent - ERROR - test_logger_handler.py:42 - [TEST] 这是一条错误日志测试
+2026-04-27 16:15:09,251 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:15:09,252 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 你说如果我想上线这个项目可以吗
+2026-04-27 16:34:44,313 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:34:44,313 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气如何
+2026-04-27 16:34:47,448 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-27 16:34:47,448 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-04-27 16:34:48,521 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-27 16:34:48,567 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 16:34:48,568 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 武汉市
+2026-04-27 16:34:50,989 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-27 16:34:50,989 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '武汉市'}
+2026-04-27 16:34:51,160 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-27 16:34:51,821 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-27 16:34:51,821 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市武汉市天气为阴，气温20摄氏度，空气湿度96%，北风≤3级，数据发布时间2026-04-27 16:32:34。
+2026-04-27 16:35:14,563 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:35:14,563 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我在哪里
+2026-04-27 16:35:16,112 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-27 16:35:16,112 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-04-27 16:35:16,935 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-27 16:35:16,982 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 16:35:16,982 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 武汉市
+2026-04-27 16:39:36,220 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:39:36,220 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我在那里
+2026-04-27 16:39:37,474 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-27 16:39:37,474 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-04-27 16:39:37,475 - agent - INFO - agent_tools.py:136 - [get_user_location]使用配置的默认城市：北京
+2026-04-27 16:39:37,475 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-27 16:39:37,512 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 16:39:37,512 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 北京
+2026-04-27 16:39:49,795 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-27 16:39:49,795 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气如何
+2026-04-27 16:39:53,426 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-27 16:39:53,427 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{}
+2026-04-27 16:39:53,428 - agent - INFO - agent_tools.py:136 - [get_user_location]使用配置的默认城市：北京
+2026-04-27 16:39:53,428 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-27 16:39:53,463 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-27 16:39:53,464 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 北京
+2026-04-27 16:39:55,328 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-27 16:39:55,328 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '北京'}
+2026-04-27 16:39:56,158 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-27 16:39:56,838 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-27 16:39:56,839 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市北京市天气为多云，气温21摄氏度，空气湿度14%，北风≤3级，数据发布时间2026-04-27 16:38:10。
